@@ -1,0 +1,13 @@
+/node_modules
+/.next
+/out
+/build
+next-env.d.ts
+.DS_Store
+*.tsbuildinfo
+.env*
+
+# 制作素材の原本・ローカル設定（公開リポジトリには含めない）
+/source
+/.claude
+.mcp.json

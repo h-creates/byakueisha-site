@@ -1,0 +1,70 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid transparent;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.4rem;
+}
+
+/* ロゴは大きくしすぎない（DESIGN.md） */
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.logoJp {
+  font-family: var(--font-mincho);
+  font-size: 1.15rem;
+  letter-spacing: 0.28em;
+  color: var(--color-accent);
+}
+
+.logoEn {
+  font-family: var(--font-latin);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-text-sub);
+}
+
+.nav {
+  display: flex;
+  gap: clamp(1.4rem, 3vw, 2.6rem);
+  font-family: var(--font-latin);
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  color: var(--color-text-sub);
+}
+
+.nav a {
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.4s ease;
+}
+
+.nav a:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 560px) {
+  .logoEn {
+    display: none;
+  }
+  .logoJp {
+    letter-spacing: 0.2em;
+  }
+  .nav {
+    gap: 1rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+  }
+}

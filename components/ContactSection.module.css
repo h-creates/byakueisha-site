@@ -1,0 +1,35 @@
+.contact {
+  background-color: var(--color-bg-soft);
+  border-top: 1px solid var(--color-line);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.4rem;
+}
+
+.title {
+  /* 他セクションの見出し（SectionTitle）と同じサイズに統一 */
+  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+}
+
+.lead {
+  /* ページ見出し下のリード文と同じサイズ・行間に統一 */
+  font-size: clamp(0.92rem, 2vw, 1.05rem);
+  line-height: 2.1;
+  letter-spacing: 0.1em;
+  color: var(--color-text-sub);
+  margin-bottom: 0.6rem;
+  /* 中央寄せ列の中で幅を持たせ、狭い画面でも折り返すようにする */
+  width: 100%;
+  max-width: 34rem;
+}
+
+@media (max-width: 560px) {
+  .brDesktop {
+    display: none;
+  }
+}

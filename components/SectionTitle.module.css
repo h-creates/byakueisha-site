@@ -1,0 +1,14 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+}

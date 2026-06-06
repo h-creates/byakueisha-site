@@ -1,0 +1,125 @@
+.cover {
+  object-fit: cover;
+}
+
+/* ============ Page Title ============ */
+.pageHead {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  padding-top: clamp(4rem, 9vw, 7rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* 縦書きタイトル＋線 を一組にし、その横に文章を上下中央で並べる（Aboutと統一） */
+.titleRow {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 2.6rem);
+  align-items: center;
+}
+
+.titleVertical {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(1.1rem, 2.4vw, 1.8rem);
+}
+
+.titleAside {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 32rem; /* 折り返しを遅らせる（横幅を広めに） */
+  min-width: 0; /* テキストが縮んで折り返せるように */
+}
+
+/* Top と同じ構造：スマホでも縦書きの横に文章を置く（下げない） */
+@media (max-width: 640px) {
+  .titleRow {
+    gap: clamp(1.2rem, 4vw, 2rem);
+  }
+}
+
+.pageTitle {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  letter-spacing: 0.2em;
+}
+
+/* 導入文：Aboutのリードと同じ大きさ・色・左揃え */
+.pageLead {
+  font-family: var(--font-gothic);
+  font-size: clamp(0.92rem, 2vw, 1.05rem);
+  line-height: 2.1;
+  letter-spacing: 0.1em;
+  color: var(--color-text-sub);
+}
+
+/* ============ ギャラリーバンド ============ */
+.heroImageWrap {
+  position: relative;
+  width: 100%;
+  max-width: var(--maxw);
+  aspect-ratio: 16 / 9;
+}
+
+/* ============ 器一覧 ============ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.6rem, 3vw, 2.6rem) clamp(1.2rem, 2.5vw, 2rem);
+}
+
+/* ============ 制作バンド ============ */
+.making {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  background-color: var(--color-bg-soft);
+}
+
+.makingImage {
+  position: relative;
+  min-height: clamp(340px, 46vw, 540px);
+}
+
+.makingBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.8rem;
+  padding: var(--space-block) clamp(2rem, 6vw, 5rem);
+}
+
+/* ============ 案内 ============ */
+.noticeBody {
+  max-width: 40rem;
+  margin: clamp(2rem, 4vw, 2.8rem) auto 0;
+  text-align: center;
+}
+
+/* ============ レスポンシブ ============ */
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 880px) {
+  .making {
+    grid-template-columns: 1fr;
+  }
+
+  .makingImage {
+    min-height: clamp(280px, 60vw, 420px);
+  }
+
+  .heroImageWrap {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2.4rem;
+  }
+}

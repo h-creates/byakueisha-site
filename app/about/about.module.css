@@ -1,0 +1,202 @@
+.cover {
+  object-fit: cover;
+}
+
+/* ============ Page Title ============ */
+.pageHead {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  padding-top: clamp(4rem, 9vw, 7rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* 縦書きタイトル＋線 を一組にし、その横に文章を上下中央で並べる（Topと同じ構成） */
+.titleRow {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 2.6rem);
+  align-items: center;
+}
+
+.titleVertical {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(1.1rem, 2.4vw, 1.8rem);
+}
+
+.titleAside {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 32rem; /* 折り返しを遅らせる（横幅を広めに） */
+  min-width: 0; /* テキストが縮んで折り返せるように */
+}
+
+/* Top と同じ構造：スマホでも縦書きの横に文章を置く（下げない） */
+@media (max-width: 640px) {
+  .titleRow {
+    gap: clamp(1.2rem, 4vw, 2rem);
+  }
+}
+
+.pageTitle {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  letter-spacing: 0.2em;
+}
+
+.pageLead {
+  font-family: var(--font-gothic);
+  font-size: clamp(0.92rem, 2vw, 1.05rem);
+  line-height: 2.1;
+  letter-spacing: 0.1em;
+  color: var(--color-text-sub);
+}
+
+/* ============ 外観写真 ============ */
+.heroImageWrap {
+  position: relative;
+  width: 100%;
+  max-width: var(--maxw);
+  aspect-ratio: 16 / 9;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+/* ============ テキスト＋画像の交互ブロック ============ */
+.blockInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.reverse {
+  direction: rtl;
+}
+
+.reverse > * {
+  direction: ltr;
+}
+
+.blockText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  max-width: 30rem;
+}
+
+.blockImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-bg-soft);
+}
+
+/* ============ つくり手（全幅2分割）============ */
+.maker {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  background-color: var(--color-bg-soft);
+}
+
+.makerImage {
+  position: relative;
+  min-height: clamp(360px, 48vw, 560px);
+}
+
+.makerBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.8rem;
+  padding: var(--space-block) clamp(2rem, 6vw, 5rem);
+}
+
+.makerName {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  font-family: var(--font-mincho);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+}
+
+.makerReading {
+  font-family: var(--font-latin);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--color-text-sub);
+}
+
+/* ============ 工房情報 ============ */
+.infoList {
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+  max-width: 38rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.infoList > div {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1.2rem;
+  padding: 1.3rem 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.infoList > div:first-child {
+  border-top: 1px solid var(--color-line);
+}
+
+.infoList dt {
+  font-family: var(--font-mincho);
+  font-size: 0.92rem;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+}
+
+.infoList dd {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-text);
+}
+
+/* ============ レスポンシブ ============ */
+@media (max-width: 880px) {
+  .blockInner,
+  .reverse {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    direction: ltr;
+  }
+
+  .blockText {
+    max-width: none;
+  }
+
+  .maker {
+    grid-template-columns: 1fr;
+  }
+
+  .makerImage {
+    min-height: clamp(280px, 60vw, 420px);
+  }
+
+  .heroImageWrap {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 560px) {
+  .brDesktop {
+    display: none;
+  }
+
+  .infoList > div {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+}

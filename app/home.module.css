@@ -1,0 +1,300 @@
+/* 共通の画像cover */
+.cover {
+  object-fit: cover;
+}
+
+/* ============ 1. Hero（左＝白地にコピー / 右＝写真）============ */
+.hero {
+  position: relative;
+}
+
+.heroInner {
+  display: grid;
+  /* 左はコピーの内容幅（サブコピーを折り返さない）に合わせ、右の写真は残り幅 */
+  grid-template-columns: auto minmax(0, 1.9fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  /* 左パディングはサイト本文（container）の左端に合わせ、右はパディング無し
+     → 写真が画面右端までフルブリードする */
+  padding-left: max(var(--pad-x), calc((100% - var(--maxw)) / 2));
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+/* 左カラム：PCでは縦書きコピーの下にサブコピー（横組み・左揃え）。
+   写真を広く見せられる Hero 向けの配置。スマホでは横並びに切り替える */
+.heroCopyGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.8rem, 3.5vw, 2.6rem);
+  padding-top: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+/* 縦書きブロック：メインコピー → 縦罫（右）。
+   About / Utsuwa のタイトルと同じ「右側の薄い縦線」に統一 */
+.heroVertical {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: clamp(1.1rem, 2.4vw, 1.8rem);
+}
+
+.heroCopy {
+  font-family: var(--font-mincho);
+  font-weight: 400;
+  /* Hero は基幹コピーを主役にして存在感を出す（小画面は控えめ・大画面で大きく） */
+  font-size: clamp(1.7rem, 4.4vw, 3.1rem);
+  letter-spacing: 0.24em;
+  line-height: 1.85;
+  color: var(--color-accent);
+}
+
+.heroSub {
+  font-family: var(--font-gothic);
+  /* About / Utsuwa の pageLead と同じサイズに統一 */
+  font-size: clamp(0.92rem, 2vw, 1.05rem);
+  line-height: 2.1;
+  letter-spacing: 0.1em;
+  color: var(--color-text-sub);
+  /* Top は1行で折り返さない */
+  white-space: nowrap;
+}
+
+/* 右カラム：写真 */
+.heroImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background-color: var(--color-bg-deep);
+}
+
+.heroImg {
+  object-fit: cover;
+}
+
+@media (max-width: 880px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    gap: clamp(1.8rem, 5vw, 2.5rem);
+    padding-left: var(--pad-x);
+    padding-right: var(--pad-x); /* スマホでは写真を収める */
+  }
+
+  /* スマホでもサブコピーは縦書きの右（中央揃え）のまま。下に移動させない */
+  .heroCopyGroup {
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(1.2rem, 4vw, 2rem);
+    padding-top: 0;
+  }
+
+  /* 狭い画面でははみ出さないよう折り返しを許可（配置は横のまま） */
+  .heroSub {
+    white-space: normal;
+  }
+
+  .heroImage {
+    aspect-ratio: 4 / 3;
+    /* order 指定を外し、DOM順どおりテキストの後＝下に置く */
+  }
+}
+
+/* ============ 2. Concept ============ */
+.conceptInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.conceptText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  max-width: 30rem;
+}
+
+.conceptImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-bg-soft);
+}
+
+/* ============ 3. About導線 / 6. Access（左右分割の共通骨格）============ */
+.lead,
+.access {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: stretch;
+}
+
+.access {
+  grid-template-columns: 0.9fr 1.1fr;
+  background-color: var(--color-bg-soft);
+}
+
+.leadImage,
+.accessImage {
+  position: relative;
+  min-height: clamp(360px, 50vw, 600px);
+}
+
+.leadBody,
+.accessBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.8rem;
+  padding: var(--space-block) clamp(2rem, 6vw, 5rem);
+}
+
+/* About導線・制作風景のボタンを内容幅に（縦並びflexでの横伸びを防ぐ）。
+   うつわ／お問い合わせのボタンと同じ控えめな幅に揃える */
+.leadBody > a,
+.makingText > a {
+  align-self: flex-start;
+}
+
+.accessInfo {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid var(--color-line);
+  padding-top: 1.6rem;
+}
+
+.accessInfo > div {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 1rem;
+}
+
+.accessInfo dt {
+  font-family: var(--font-latin);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  color: var(--color-text-sub);
+}
+
+.accessInfo dd {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-text);
+}
+
+.accessLink {
+  font-family: var(--font-gothic);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  transition: opacity 0.3s ease;
+}
+
+.accessLink:hover {
+  opacity: 0.6;
+}
+
+/* ============ 4. Utsuwa導線 ============ */
+.utsuwaHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.9rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.utsuwaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+.utsuwaMore {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+/* ============ 5. 制作風景 ============ */
+.making {
+  background-color: var(--color-bg-soft);
+}
+
+.makingInner {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.makingText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  max-width: 26rem;
+}
+
+.makingImages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 2vw, 1.6rem);
+  align-items: end;
+}
+
+.makingImgTall {
+  position: relative;
+  aspect-ratio: 3 / 4;
+}
+
+.makingImgWide {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  margin-top: 2.5rem;
+}
+
+/* ============ レスポンシブ ============ */
+@media (max-width: 880px) {
+  .conceptInner,
+  .makingInner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .conceptText,
+  .makingText {
+    max-width: none;
+  }
+
+  .lead,
+  .access {
+    grid-template-columns: 1fr;
+  }
+
+  .access {
+    /* 画像を上に出す */
+    direction: ltr;
+  }
+
+  .leadImage,
+  .accessImage {
+    min-height: clamp(280px, 60vw, 440px);
+  }
+
+  .utsuwaGrid {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 2.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .utsuwaGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .makingImgWide {
+    margin-top: 1.4rem;
+  }
+}

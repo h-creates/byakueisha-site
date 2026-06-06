@@ -1,0 +1,50 @@
+.stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  /* 重なり（クロスフェード）はopacityだけで作る。長めにとって止まらず溶け合うように */
+  transition: opacity 2.8s ease-in-out;
+  will-change: opacity;
+}
+
+.isActive {
+  opacity: 1;
+}
+
+/* ズームは常に一方向（寄っていく）。forwards で終端の拡大を保持し、
+   フェードアウト中に等倍へ戻る（＝引く）動きが出ないようにする */
+.zoomer {
+  position: absolute;
+  inset: 0;
+  animation: heroZoomIn 9s linear forwards;
+  will-change: transform;
+}
+
+.img {
+  object-fit: cover;
+}
+
+@keyframes heroZoomIn {
+  from {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(1.08) translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide {
+    transition: none;
+  }
+  .zoomer {
+    animation: none;
+    transform: none;
+  }
+}
