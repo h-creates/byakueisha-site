@@ -7,6 +7,7 @@ import SectionTitle from "../components/SectionTitle";
 import UtsuwaCard from "../components/UtsuwaCard";
 import ContactSection from "../components/ContactSection";
 import HeroSlideshow from "../components/HeroSlideshow";
+import IntroOverlay from "../components/IntroOverlay";
 import { utsuwaList } from "../data/utsuwa";
 import styles from "./home.module.css";
 
@@ -27,6 +28,7 @@ export default function HomePage() {
 
   return (
     <>
+      <IntroOverlay />
       <Header />
 
       <main>

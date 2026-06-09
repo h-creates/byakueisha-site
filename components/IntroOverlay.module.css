@@ -1,0 +1,64 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  /* 最後に visibility:hidden / pointer-events:none 相当になり、操作を妨げない */
+  animation: introOverlay 2s ease forwards;
+}
+
+.word {
+  font-family: var(--font-mincho);
+  font-weight: 400;
+  font-size: clamp(2rem, 9vw, 4rem);
+  letter-spacing: 0.3em;
+  /* letter-spacing の末尾アキ分を相殺して中央に見せる */
+  padding-left: 0.3em;
+  color: var(--color-accent);
+  animation: introWord 2s ease forwards;
+}
+
+/* 「白詠舎」が下からふわっと浮かび上がり、少し上がりながら消える */
+@keyframes introWord {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  68% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* 白い幕が最後にフェードアウトしてトップを現す */
+@keyframes introOverlay {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* 動きを抑えたい設定では演出を出さず即表示 */
+@media (prefers-reduced-motion: reduce) {
+  .overlay {
+    display: none;
+  }
+}
