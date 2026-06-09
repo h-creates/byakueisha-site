@@ -7,7 +7,7 @@
   justify-content: center;
   background-color: #ffffff;
   /* 最後に visibility:hidden になり、操作を妨げない */
-  animation: introOverlay 1.6s ease forwards;
+  animation: introOverlay 2.3s ease forwards;
 }
 
 .brand {
@@ -16,7 +16,7 @@
   align-items: center;
   gap: 0.75rem;
   /* ぼかし→くっきり で「滲み上がる」演出 */
-  animation: introBrand 1.6s ease forwards;
+  animation: introBrand 2.3s ease forwards;
   will-change: opacity, transform, filter;
 }
 
@@ -46,20 +46,22 @@
     transform: translateY(14px);
     filter: blur(12px);
   }
-  40% {
+  28% {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
   }
-  68% {
+  60% {
+    /* くっきり保持（余韻） */
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
   }
   100% {
+    /* ゆっくり滲んで消える */
     opacity: 0;
-    transform: translateY(-6px);
-    filter: blur(5px);
+    transform: translateY(-7px);
+    filter: blur(6px);
   }
 }
 
@@ -69,10 +71,11 @@
     opacity: 1;
     visibility: visible;
   }
-  65% {
+  58% {
     opacity: 1;
   }
   100% {
+    /* 幕をゆっくり上げて余韻を残す */
     opacity: 0;
     visibility: hidden;
   }
