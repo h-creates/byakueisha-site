@@ -6,38 +6,60 @@
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  /* 最後に visibility:hidden / pointer-events:none 相当になり、操作を妨げない */
-  animation: introOverlay 2s ease forwards;
+  /* 最後に visibility:hidden になり、操作を妨げない */
+  animation: introOverlay 1.6s ease forwards;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  /* ぼかし→くっきり で「滲み上がる」演出 */
+  animation: introBrand 1.6s ease forwards;
+  will-change: opacity, transform, filter;
 }
 
 .word {
   font-family: var(--font-mincho);
   font-weight: 400;
-  font-size: clamp(2rem, 9vw, 4rem);
+  font-size: clamp(1.5rem, 6vw, 2.6rem);
   letter-spacing: 0.3em;
   /* letter-spacing の末尾アキ分を相殺して中央に見せる */
   padding-left: 0.3em;
   color: var(--color-accent);
-  animation: introWord 2s ease forwards;
 }
 
-/* 「白詠舎」が下からふわっと浮かび上がり、少し上がりながら消える */
-@keyframes introWord {
+.latin {
+  font-family: var(--font-latin);
+  font-size: 0.62rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  padding-left: 0.4em;
+  color: var(--color-text-sub);
+}
+
+/* ぼやけ・薄い・下 → くっきり・くっきり浮かび上がり → 上へ滲んで消える */
+@keyframes introBrand {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(14px);
+    filter: blur(12px);
   }
-  45% {
+  40% {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
   68% {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
   100% {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-6px);
+    filter: blur(5px);
   }
 }
 
@@ -47,7 +69,7 @@
     opacity: 1;
     visibility: visible;
   }
-  70% {
+  65% {
     opacity: 1;
   }
   100% {
