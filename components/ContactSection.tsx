@@ -13,9 +13,8 @@ export default function ContactSection() {
           <br className={styles.brDesktop} />
           メールにて承っています。
         </p>
-        <Button href="mailto:contact@byakueisha.example" external>
-          お問い合わせ
-        </Button>
+        {/* サンプルサイトのため、押しても遷移しない（実案件で mailto やフォームに差し替え） */}
+        <Button>お問い合わせ</Button>
       </div>
     </section>
   );

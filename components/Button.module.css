@@ -11,6 +11,7 @@
   font-weight: 400;
   letter-spacing: 0.14em;
   color: var(--color-accent);
+  cursor: pointer; /* <button>要素でもリンクと同じ見た目に */
   transition: border-color 0.4s ease, background-color 0.4s ease;
 }
 

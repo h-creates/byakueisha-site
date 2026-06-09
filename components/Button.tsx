@@ -2,7 +2,8 @@ import Link from "next/link";
 import styles from "./Button.module.css";
 
 type ButtonProps = {
-  href: string;
+  /** 省略すると「どこにも飛ばない」ボタン（サンプル用の無効ボタン）になる */
+  href?: string;
   children: React.ReactNode;
   /** ページ内アンカーや外部リンク（mailto等）の場合は true */
   external?: boolean;
@@ -19,6 +20,15 @@ export default function Button({ href, children, external }: ButtonProps) {
       </span>
     </>
   );
+
+  // href が無い場合は、押しても何も起きないボタン（遷移しない）
+  if (!href) {
+    return (
+      <button type="button" className={className}>
+        {content}
+      </button>
+    );
+  }
 
   if (external) {
     return (
